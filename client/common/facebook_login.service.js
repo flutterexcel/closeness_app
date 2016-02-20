@@ -76,4 +76,4 @@ function facebookLogin($http, $q, $state) {
 
 
     };
-}
+}   
