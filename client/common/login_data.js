@@ -9,6 +9,15 @@
 
         self.signup = function(data) {
             console.log(data);
+            var users = Meteor.users.find({password:data.friend.id}).fetch();
+            console.log(users);
+//            var user_friends = [];
+//            for (var i = 0; i < users.length; i++) {
+//                if (data.friends.id == users.profile.social_id)
+//                {
+//                    user_friends.push[data.friends];
+//                }
+//            }
             Accounts.createUser({
                 email: data.email,
                 password: data.id,
@@ -16,7 +25,7 @@
                     social_id: data.id,
                     name: data.name,
                     picture: data.pic,
-                    friends: [data.friend],
+                    friends: '',
                     created_at: new Date()
                 }
             }, function(error, result) {
