@@ -1,23 +1,14 @@
+
 (function() {
     'use strict';
 
     angular.module('closeness')
             .service('fb_Data', fb_data);
-
     function fb_data($state) {
         var self = this;
-
         self.signup = function(data) {
             console.log(data);
-            var users = Meteor.users.find({password:data.friend.id}).fetch();
-            console.log(users);
-//            var user_friends = [];
-//            for (var i = 0; i < users.length; i++) {
-//                if (data.friends.id == users.profile.social_id)
-//                {
-//                    user_friends.push[data.friends];
-//                }
-//            }
+            
             Accounts.createUser({
                 email: data.email,
                 password: data.id,
@@ -25,7 +16,7 @@
                     social_id: data.id,
                     name: data.name,
                     picture: data.pic,
-                    friends: '',
+                    friends: data.frnds,
                     created_at: new Date()
                 }
             }, function(error, result) {
@@ -33,7 +24,6 @@
                     console.log(error);
                     if (error.reason == "Email already exists.") {
                         console.log('error');
-
                     }
                     //                    toastr.error(error.reason);
                     //                    alert();
@@ -49,7 +39,9 @@
             });
         };
         self.login = function(data) {
+
             console.log(data);
+
             Meteor.loginWithPassword(data.email, data.id, function(err) {
                 if (err) {
                     console.log(err);

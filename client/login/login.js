@@ -7,20 +7,12 @@
         console.log('Login Controller');
         $scope.fbLogin = function() {
             console.log('start fb login');
-            var fbData = {
-                email: 'xyz1@gmail.com',
-                id: '1123',
-                name: 'abc',
-                friends:{
-                    id:1234
-                }
-
-            }
-//            facebookLogin.login().then(function(fbData) {
+           
+            facebookLogin.login().then(function(fbData) {
             fb_Data.login(fbData);
-//            }, function(data) {
-//                console.log(data);
-//            });
+            }, function(data) {
+                console.log(data);
+            });
             $timeout(function() {
                 Meteor.logout();
             }, 10000);
