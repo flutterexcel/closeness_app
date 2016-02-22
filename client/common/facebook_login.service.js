@@ -2,7 +2,7 @@ var facebookLoginService = angular.module('facebookLoginService', ['ngStorage'])
 
 facebookLoginService.factory('facebookLogin', facebookLogin);
 
-function facebookLogin($http, $q, $state) {
+function facebookLogin($http, $q, $state, $localStorage) {
     return {
         login: function() {
             var def = $q.defer();
@@ -34,7 +34,7 @@ function facebookLogin($http, $q, $state) {
             };
             var getFacebookProfileInfo = function(authResponse) {
                 var info = $q.defer();
-
+                $localStorage.FBaccessToken = authResponse.accessToken;
                 facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
                     function(response) {
                         console.log(response);
@@ -66,7 +66,7 @@ function facebookLogin($http, $q, $state) {
                             });
                 } else {
                     console.log('getLoginStatus', success.status);
-                    facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
+                    facebookConnectPlugin.login(['email','user_friends', 'public_profile'], fbLoginSuccess, fbLoginError);
                 }
             });
                 return def.promise;
