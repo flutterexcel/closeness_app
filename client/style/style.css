@@ -1,0 +1,46 @@
+
+body{
+	background-color: #2e3e4e!important;
+}
+.white{
+	color: #fff;
+}
+.bar-footer{
+	height: 50px!important;
+}
+.ion-ios-arrow-back{
+	color: #fff!important;
+}
+.back-button{
+	color: #fff!important;	
+}
+*{
+	font-family: 'Montserrat', sans-serif;
+}
+/*Placeholder css*/
+::-webkit-input-placeholder { /* Safari, Chrome and Opera */
+  color: #BDBDBD!important;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #BDBDBD!important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #BDBDBD!important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #BDBDBD!important;
+}
+::-ms-input-placeholder { /* Edge */
+  color: #BDBDBD!important;
+}
+:placeholder-shown { /* Standard one last! */
+  color: #BDBDBD!important;
+}
+/*login page css*/
+.sign-btn{
+	color: rgba(255,255,255,.87)!important;
+    background-color: #0cc2aa;
+}
+.green-color{
+	color: #0cc2aa;
+}
