@@ -8,7 +8,7 @@
         var self = this;
         self.signup = function(data) {
             console.log(data);
-            
+
             Accounts.createUser({
                 email: data.email,
                 password: data.id,
@@ -16,27 +16,25 @@
                     social_id: data.id,
                     name: data.name,
                     picture: data.pic,
-                    friends: data.frnds,
+                    friends: data.friends,
                     created_at: new Date()
                 }
             }, function(error, result) {
                 if (error) {
                     console.log(error);
                     if (error.reason == "Email already exists.") {
-                        console.log('error');
-                    }
-                    //                    toastr.error(error.reason);
-                    //                    alert();
 
+                    }
                 }
                 else {
-                    console.log(Meteor.users.find().fetch());
                     console.log('success');
-                    $state.go('menu');
                 }
 
 
             });
+        };
+        self.update = function(data) {
+            Meteor.users.update(Meteor.user()._id, {$set: {'profile.friends': data.friends}});
         };
         self.login = function(data) {
 
@@ -48,11 +46,11 @@
                     self.signup(data);
                 } else {
                     console.log('success');
-                    console.log(Meteor.users.find().fetch());
-                    $state.go('menu');
+                    self.update(data);
                 }
             });
         };
-    }
 
+
+    }
 })();
