@@ -2,7 +2,7 @@ var facebookLoginService = angular.module('facebookLoginService', ['ngStorage'])
 
 facebookLoginService.factory('facebookLogin', facebookLogin);
 
-function facebookLogin($http, $q, $state,toastNotification) {
+function facebookLogin($http, $q, $state,friendService,toastNotification) {
     return {
         login: function() {
             var def = $q.defer();
@@ -32,7 +32,7 @@ function facebookLogin($http, $q, $state,toastNotification) {
                         friendService.getFriends(response.id, authResponse.accessToken).then(function(data) {
                         response.friends= data.data.data;
                         }, function(data) {
-                        toastNotification.toast('Unable to get Friend List!!');
+                        toastNotification.toast.showShortBottom('Unable to get Friend List!!');
                         });
                         info.resolve(response);
                     },
