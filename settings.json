@@ -1,0 +1,15 @@
+{
+  "facebook": {
+    "appId": "1705896529656807",
+    "secret": "2f83b901d140d11d274e612e92c85568"
+  },
+  "public": {
+    "facebook": {
+      "permissions": [
+        "public_profile", 
+        "email", 
+        "user_friends"
+      ]
+    }
+  }
+}
