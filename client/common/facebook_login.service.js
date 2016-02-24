@@ -2,7 +2,7 @@ var facebookLoginService = angular.module('facebookLoginService', ['ngStorage'])
 
 facebookLoginService.factory('facebookLogin', facebookLogin);
 
-function facebookLogin($http, $q, $state,toastNotification) {
+function facebookLogin($http, $q, $state,friendService,toastNotification) {
     return {
         login: function() {
             var def = $q.defer();
