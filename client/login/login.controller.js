@@ -4,13 +4,12 @@
         .controller('loginCtrl', loginCtrl);
 
     function loginCtrl(facebookLogin, $state) {
-        $scope.fbLogin = function() {
-            console.log('start fb login');
+        this.fbLogin = function() {
             facebookLogin.login().then(function(data) {
-                console.log(data);
+                window.plugins.toast.showShortBottom('Successfully Logged In');
                 $state.go('friends');
             }, function(data) {
-                console.log(data);
+                window.plugins.toast.showShortBottom('Error occur during login!!');
             });
         }
     }

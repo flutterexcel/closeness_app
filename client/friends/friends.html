@@ -3,21 +3,14 @@
 </ion-header-bar>
 <ion-content>
    <ul class="list no-border p-b">
-      <li class="list-item" ng-repeat="friends in friendsList" ng-click="friendClick($index)">
-         <a herf="" class="list-left"><span class="w-40 avatar"><img src="{{friends.picture.data.url}}" alt="..."> <i class="on b-white bottom"></i></span></a>
-         <button class="button btn-sx pull-right invite-btn" ng-click="friends.invite()" ng-class="{shown: $index == selected}">
+      <li class="list-item" ng-repeat="friend in friendsList" ng-click="friendClick($index)">
+         <a herf="" class="list-left"><span class="w-40 avatar"><img src="{{friend.picture.data.url}}" alt="{{friend.name}}"> <i class="on b-white bottom"></i></span></a>
+         <button class="button btn-sx pull-right invite-btn" ng-click="invite()" ng-class="{shown: $index == selected}">
          Invite
          </button>
          <div class="list-body">
-            <div><a href="">{{friends.name}}</a></div>
+            <div><a href="">{{friend.name}}</a></div>
             <small class="text-muted text-ellipsis">Designer, Blogger</small>
-         </div>
-      </li>
-      <li class="list-item">
-         <a herf="" class="list-left"><span class="w-40 avatar"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/p50x50/11164632_894528360605508_7033406218936452832_n.jpg?oh=43d9bda764a6f7dc06c70360a3c29111&oe=575D7EE8&__gda__=1466849464_344cfaf55d0368de4af35c78b41253f6" alt="..."> <i class="busy b-white bottom"></i></span></a>
-         <div class="list-body">
-            <div><a href="">Joge Lucky</a></div>
-            <small class="text-muted text-ellipsis">Art director, Movie Cut</small>
          </div>
       </li>
    </ul>
