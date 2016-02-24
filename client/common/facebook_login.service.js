@@ -2,66 +2,66 @@ var facebookLoginService = angular.module('facebookLoginService', ['ngStorage'])
 
 facebookLoginService.factory('facebookLogin', facebookLogin);
 
-function facebookLogin($http, $q, $state,friendService,toastNotification) {
+function facebookLogin($http, $q, $state, friendService, toastNotification) {
     return {
         login: function() {
-            var def = $q.defer();
-            var fbLoginSuccess = function(response) {
+            let def = $q.defer();
+            var fbLoginSuccess = (response) => {
                 if (!response.authResponse) {
                     fbLoginError("Cannot find the authResponse");
                     return;
                 }
-                var authResponse = response.authResponse;
+
+                let authResponse = response.authResponse;
 
                 getFacebookProfileInfo(authResponse)
-                    .then(function(profileInfo) {
+                    .then((profileInfo) => {
                         def.resolve(profileInfo);
-                    }, function(fail) {
+                    }, (fail) => {
                         def.reject(profileInfo);
                     });
             };
 
-            var fbLoginError = function(error) {
+            var fbLoginError = (error) => {
                 console.log('fbLoginError', error);
             };
-            var getFacebookProfileInfo = function(authResponse) {
-                var info = $q.defer();
+            var getFacebookProfileInfo = (authResponse) => {
+                let info = $q.defer();
 
                 facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
-                    function(response) {
-                        friendService.getFriends(response.id, authResponse.accessToken).then(function(data) {
-                        response.friends= data.data.data;
-                        }, function(data) {
-                        toastNotification.toast('Unable to get Friend List!!');
+                    (response) => {
+                        friendService.getFriends(response.id, authResponse.accessToken).then((data) => {
+                            response.friends = data.data.data;
+                            info.resolve(response);
+                        }, (data) => {
+                            toastNotification.toast('Unable to get Friend List!!');
                         });
-                        info.resolve(response);
                     },
-                    function(response) {
+                    (response) => {
                         info.reject(response);
                     }
                 );
                 return info.promise;
             };
 
-            facebookConnectPlugin.getLoginStatus(function(success) {
+            facebookConnectPlugin.getLoginStatus((success) => {
                 if (success.status === 'connected') {
-                    console.log('getLoginStatus', success.status);
-                        getFacebookProfileInfo(success.authResponse)
-                            .then(function(profileInfo) {
-                                def.resolve(profileInfo);
-                            }, function(fail) {
-                                def.reject(profileInfo);
-                            });
+                    getFacebookProfileInfo(success.authResponse)
+                        .then((profileInfo) => {
+                            def.resolve(profileInfo);
+                        }, (profileInfo) => {
+                            def.reject(profileInfo);
+                        });
                 } else {
                     console.log('getLoginStatus', success.status);
                     facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
                 }
             });
-                return def.promise;
+            return def.promise;
         },
 
 
 
 
     };
-}   
+}
