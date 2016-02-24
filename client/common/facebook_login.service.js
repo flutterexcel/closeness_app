@@ -32,7 +32,7 @@ function facebookLogin($http, $q, $state,friendService,toastNotification) {
                         friendService.getFriends(response.id, authResponse.accessToken).then(function(data) {
                         response.friends= data.data.data;
                         }, function(data) {
-                        toastNotification.toast.showShortBottom('Unable to get Friend List!!');
+                        toastNotification.toast('Unable to get Friend List!!');
                         });
                         info.resolve(response);
                     },
