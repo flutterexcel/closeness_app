@@ -3,12 +3,12 @@
     angular.module('closeness')
         .controller('friendCtrl', friendCtrl);
 
-    function friendCtrl(friendService,socialSharing,$scope) {
+    function friendCtrl(friendService, socialSharing, $scope) {
         $scope.selected = null;
-        $scope.friendClick = function(index) {
+        $scope.friendClick = (index) => {
             this.selected = index;
         }
-        $scope.invite = function() {
+        $scope.invite = () => {
             socialSharing.socialSharePopup();
         }
     }
