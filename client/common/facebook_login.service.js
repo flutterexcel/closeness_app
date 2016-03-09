@@ -54,7 +54,7 @@ function facebookLogin($http, $q, $state, friendService, toastNotification) {
                         });
                 } else {
                     console.log('getLoginStatus', success.status);
-                    facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
+                    facebookConnectPlugin.login(['email', 'public_profile', 'user_friends'], fbLoginSuccess, fbLoginError);
                 }
             });
             return def.promise;

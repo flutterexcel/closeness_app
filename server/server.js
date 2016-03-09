@@ -21,7 +21,8 @@ Meteor.methods({
                             throw new Meteor.Error(403, "User Email and Name are required");
                         }
 
-                    }
+                    });
+                  }
                 });
 
             //update user location and friendlist
