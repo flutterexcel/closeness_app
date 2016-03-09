@@ -3,7 +3,7 @@
     angular.module('closeness')
         .factory('friendService', friendService);
 
-    function friendService($http, $q) {
+    function friendService($http, $q, locationApi) {
         let service = {};
         service.getFriends = (FB_Social_Id, FB_acessToken) => {
             let def = $q.defer();
@@ -17,7 +17,7 @@
         };
         service.getLocation = () => {
             let def = $q.defer();
-            let api = $http.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDK9qQIhECy-RbUcmI7L7FP1hICn-yBt0k');
+            let api = $http.post(locationApi.url);
             api.then((data) => {
                 def.resolve(data);
             }, (data) => {

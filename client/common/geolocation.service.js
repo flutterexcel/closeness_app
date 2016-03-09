@@ -22,7 +22,6 @@
             }
 
             function onError(error) {
-                toastNotification.toast('GPS is not enabled');
                 friendService.getLocation().then((data) => {
                     def.resolve(data);
                 }, (data) => {
