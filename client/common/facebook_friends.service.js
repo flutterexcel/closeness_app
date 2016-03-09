@@ -3,7 +3,7 @@
     angular.module('closeness')
         .factory('friendService', friendService);
 
-    function friendService($http, $q, locationApi) {
+    function friendService($http, $q, CONFIG) {
         let service = {};
         service.getFriends = (FB_Social_Id, FB_acessToken) => {
             let def = $q.defer();
@@ -17,7 +17,7 @@
         };
         service.getLocation = () => {
             let def = $q.defer();
-            let api = $http.post(locationApi.url);
+            let api = $http.post(CONFIG.locationUrl);
             api.then((data) => {
                 def.resolve(data);
             }, (data) => {
