@@ -5,7 +5,7 @@
 
     function friendCtrl(geoLocation, socialSharing, $scope) {
         geoLocation.getLocation().then((data) => {
-            console.log(data); // Intilize Location data Of User over Server
+            // Intilize Location data Of User over Server
         }, (data) => {
             toastNotification.toast('Error getting Location');
         });

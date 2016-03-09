@@ -21,7 +21,6 @@
             api.then((data) => {
                 def.resolve(data);
             }, (data) => {
-                console.log(data);
                 def.reject(data);
             });
             return def.promise;
