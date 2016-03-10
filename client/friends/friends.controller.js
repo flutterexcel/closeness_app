@@ -2,13 +2,12 @@
     'use strict';
     angular.module('closeness')
             .controller('friendCtrl', friendCtrl);
-    function friendCtrl(friendService, socialSharing, $scope) {
+    function friendCtrl(friendService, socialSharing, $scope,$rootScope,$state) {
         $scope.selected = null;
-        //       
+            
 //        Meteor.call('sendEmail');
-        Meteor.call('friendlist', function(err, data) {
-            console.log(data);
-            console.log('friend list');
+        Meteor.call('friendlist', (err, data) => {
+            $rootScope.friendsList = data;
         });
         $scope.invite = function() {
             socialSharing.socialSharePopup();
@@ -16,5 +15,10 @@
         $scope.friendClick = function(index) {
             this.selected = index;
         };
+        
+        $scope.signout = () => {
+            Meteor.logout();
+            $state.go('login');
+        }
     }
 })();

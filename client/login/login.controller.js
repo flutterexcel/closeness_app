@@ -5,28 +5,26 @@
 
     function loginCtrl(facebookLogin, toastNotification, $state, $rootScope,$timeout) {
         this.fbLogin = () => {
- 
+     
             facebookLogin.login().then((data) => {
                 $rootScope.friendsList = data.friends;
-                  Meteor.loginWithPassword(data.email, data.id, function(err) {
+                  Meteor.loginWithPassword(data.email, data.id, (err)=>{
                 if (err) {
-                    console.log(err);
-                    Meteor.call('user_signup', data, function(err) {
+                 
+                    Meteor.call('user_signup', data, (err)=> {
                         if (err) {
-                            console.log('error');
+                            toastNotification.toast(err.reason);
                         } else {
-                            console.log('success');
-                            
+                            $state.go('friends');
                         }
                     });
                 } else {
                     console.log('success');
-                    Meteor.call('friend_update', data, function(err) {
+                    Meteor.call('friend_update', data,(err)=> {
                         if (err) {
-                            console.log('update fail');
+                         toastNotification.toast(err.reason);  
                         } else {
-                            console.log(Meteor.users.find({}).fetch());
-                            console.log('update');
+                           $state.go('friends');
                         }
                     });
                 }

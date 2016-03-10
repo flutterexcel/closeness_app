@@ -3,16 +3,5 @@
 </ion-header-bar>
 <ion-content>
     <div ng-click="signout()">logout</div>
-   <ul class="list no-border p-b">
-      <li class="list-item" ng-repeat="friend in friendsList" ng-click="friendClick($index)">
-         <a herf="" class="list-left"><span class="w-40 avatar"><img src="{{friend.picture.data.url}}" alt="{{friend.name}}"> <i class="on b-white bottom"></i></span></a>
-         <button class="button btn-sx pull-right invite-btn" ng-click="invite()" ng-class="{shown: $index == selected}">
-         Invite
-         </button>
-         <div class="list-body">
-            <div><a href="">{{friend.name}}</a></div>
-            <small class="text-muted text-ellipsis">Designer, Blogger</small>
-         </div>
-      </li>
-   </ul>
+    <friend-list list="friendsList" ng-if="friendsList"></friend-list>
 </ion-content>
