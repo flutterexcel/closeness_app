@@ -3,8 +3,9 @@
     angular.module('closeness')
         .controller('loginCtrl', loginCtrl);
 
-    function loginCtrl(facebookLogin, toastNotification, $state, $rootScope) {
+    function loginCtrl(facebookLogin, toastNotification, $state, $rootScope,$timeout) {
         this.fbLogin = () => {
+ 
             facebookLogin.login().then((data) => {
                 $rootScope.friendsList = data.friends;
                 toastNotification.toast('Successfully Logged In');
