@@ -18,9 +18,7 @@
         
         $scope.signout = () => {
             Meteor.logout();
-            facebookConnectPlugin.logout(function() {
-                   console.log('logout');
-               });
+            facebookConnectPlugin.logout();
             $state.go('login');
         }
     }

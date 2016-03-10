@@ -1,14 +1,14 @@
 (function() {
     'use strict';
     angular.module('closeness')
-            .directive('friendsubList', friendsubList);
-    function friendsubList() {
+            .directive('friend', friend);
+    function friend() {
         var fsub = {};
         fsub.restrict = 'E';
         fsub.scope = {
-            friend: '=sublist'
+            friends: '=sublist'
         };
-        fsub.templateUrl = 'client/friends/friendsubtemp.html'
+        fsub.templateUrl = 'client/friends/friend.html'
 
         return fsub;
     }
