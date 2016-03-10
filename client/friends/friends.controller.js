@@ -1,8 +1,17 @@
 (function() {
     'use strict';
     angular.module('closeness')
-            .controller('friendCtrl', friendCtrl);
-    function friendCtrl(friendService, socialSharing, $scope,$rootScope,$state) {
+
+
+        .controller('friendCtrl', friendCtrl);
+
+    function friendCtrl(geoLocation, socialSharing, $scope,$state) {
+        geoLocation.getLocation().then((data) => {
+            // Intilize Location data Of User over Server
+        }, (data) => {
+            toastNotification.toast('Error getting Location');
+        });
+
         $scope.selected = null;
             
 //        Meteor.call('sendEmail');

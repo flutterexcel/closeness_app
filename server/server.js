@@ -2,7 +2,7 @@
 Meteor.methods({
     user_signup: function(data) {
         if (data.email && data.id) {
-         
+
             Accounts.createUser({
                 email: data.email,
                 password: data.id,
@@ -23,7 +23,6 @@ Meteor.methods({
 
     }
 });
-
 //update user location and friendlist
 Meteor.methods({
     friend_update: function(data) {
