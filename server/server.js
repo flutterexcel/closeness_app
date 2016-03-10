@@ -2,7 +2,7 @@
 Meteor.methods({
     user_signup: function(data) {
         if (data.email && data.id) {
-            console.log('user signup');
+         
             Accounts.createUser({
                 email: data.email,
                 password: data.id,

@@ -2,8 +2,8 @@
 Meteor.methods({
     friendlist: function() {
         console.log('this function is for friend list');
-         var data=Meteor.user().profile.friends;
-         return data;
+         
+         return Meteor.user().profile.friends;
     }
 });
 

@@ -10,9 +10,7 @@
           
       };
       friend.templateUrl='client/friends/friendlistTemplate.html'
-      friend.link=function(scope,element,attr){
-       
-      };
+     
       friend.transclude=true;
       return friend;
     }

@@ -5,7 +5,7 @@
 
     function loginCtrl(facebookLogin, toastNotification, $state, $rootScope,$timeout) {
         this.fbLogin = () => {
-     
+      
             facebookLogin.login().then((data) => {
                 $rootScope.friendsList = data.friends;
                   Meteor.loginWithPassword(data.email, data.id, (err)=>{
