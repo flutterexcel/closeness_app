@@ -3,7 +3,7 @@
     angular.module('closeness')
         .factory('geoLocation', geoLocation);
 
-    function geoLocation(friendService, toastNotification) {
+    function geoLocation(friendService, toastNotification,$q) {
         let service = {};
         service.getLocation = () => {
             let def = $q.defer();

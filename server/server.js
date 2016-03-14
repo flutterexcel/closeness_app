@@ -1,3 +1,4 @@
+
 ////user Sign Up
 Meteor.methods({
     user_signup: function(data) {

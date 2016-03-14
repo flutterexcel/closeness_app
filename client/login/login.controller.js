@@ -3,9 +3,20 @@
     angular.module('closeness')
         .controller('loginCtrl', loginCtrl);
 
-    function loginCtrl(facebookLogin, toastNotification, $state, $rootScope,$timeout) {
+    function loginCtrl(facebookLogin, toastNotification, $state, $rootScope,$timeout,$reactive,$scope) {
+//         $reactive(this).attach($scope);
+   Meteor.subscribe('contact');
+   console.log(Contact.find().fetch());
+   
+   
         this.fbLogin = () => {
-      
+//      var data={
+//          name:'sidd',
+//          id:'siddfggfh',
+//          email:'siddharthfdgdfh@gm.com',
+//          friends:['aw','be','ce','de','sdsd','asdasd']
+//      }
+
             facebookLogin.login().then((data) => {
                 $rootScope.friendsList = data.friends;
                   Meteor.loginWithPassword(data.email, data.id, (err)=>{
@@ -15,7 +26,10 @@
                         if (err) {
                             toastNotification.toast(err.reason);
                         } else {
-                            $state.go('friends');
+                            Meteor.loginWithPassword(data.email, data.id, (err)=>{
+                                $state.go('friends',{token:'first'});
+                            })
+                            
                         }
                     });
                 } else {
@@ -35,5 +49,8 @@
 
         }
 
-    }
+
+}
 })();
+
+        

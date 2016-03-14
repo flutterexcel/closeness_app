@@ -9,7 +9,7 @@ angular.module('closeness').config(function($urlRouterProvider, $stateProvider, 
             controllerAs: 'login'
         })
         .state('friends', {
-            url: '/friends',
+            url: '/friends/:token',
             templateUrl: 'client/friends/friends.html',
             controller: 'friendCtrl',
             controllerAs: 'friends'
