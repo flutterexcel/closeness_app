@@ -53,9 +53,10 @@ function facebookLogin($http, $q, $state, friendService, toastNotification) {
                             def.reject(profileInfo);
                         });
                 } else {
-                    console.log('getLoginStatus', success.status);
+                      facebookConnectPlugin.login(['email','public_profile','user_friends'], fbLoginSuccess, fbLoginError);
+//                    console.log('getLoginStatus', success.status);
 
-                    facebookConnectPlugin.login(['email','public_profile','user_friends'], fbLoginSuccess, fbLoginError);
+                  
 
                 }
             });

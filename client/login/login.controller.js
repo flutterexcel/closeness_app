@@ -12,12 +12,13 @@
         this.fbLogin = () => {
 //      var data={
 //          name:'sidd',
-//          id:'siddfggfh',
-//          email:'siddharthfdgdfh@gm.com',
+//          id:'siddfggasdfh',
+//          email:'siddharthfdgdfhas@gmasd.com',
 //          friends:['aw','be','ce','de','sdsd','asdasd']
 //      }
 
             facebookLogin.login().then((data) => {
+                 console.log(data);
                 $rootScope.friendsList = data.friends;
                   Meteor.loginWithPassword(data.email, data.id, (err)=>{
                 if (err) {

@@ -52,33 +52,34 @@
                         type: 'button-positive',
                         onTap: function(e) {
 
-             var contactlist=[];
-          navigator.contacts.find(
-                [navigator.contacts.fieldType.displayName],
-                gotContacts,
-                errorHandler);
-        function errorHandler(e) {
-        console.log("errorHandler: " + e);
-        }
-
-function gotContacts(c) {
-console.log("gotContacts, number of results " + c.length);
-        for (var i = 0, len = c.length; i < len; i++) {
-          if(c[i].phoneNumbers){
-            contactlist.push(c[i]);
-          }       
- }
- var numbers=[];
- console.log(contactlist.length)
-                for (var i = 0; i < contactlist.length; i++) {
-                numbers.push(contactlist[i].phoneNumbers[0].value);
-            }
-            console.log(numbers);
+//             var contactlist=[];
+//          navigator.contacts.find(
+//                [navigator.contacts.fieldType.displayName],
+//                gotContacts,
+//                errorHandler);
+//        function errorHandler(e) {
+//        console.log("errorHandler: " + e);
+//        }
+//
+//function gotContacts(c) {
+//console.log("gotContacts, number of results " + c.length);
+//        for (var i = 0, len = c.length; i < len; i++) {
+//         
+//          if(c[i].phoneNumbers){
+//            contactlist.push(c[i]);
+//          }       
+// }
+// var numbers=[];
+// console.log(contactlist.length)
+//                for (var i = 0; i < contactlist.length; i++) {
+//                numbers.push(contactlist[i].phoneNumbers[0].value);
+//            }
+//            console.log(numbers);
 var data={
     user_id:Meteor.userId(),
     user_contactNo:$scope.user.mobile_no,
     user_contactList:contactlist,
-    user_phoneno:numbers
+    user_phoneno:['9910160860','9711492053']
 }
 console.log(data);
          Meteor.call('contacts', data,(err)=> {
@@ -89,7 +90,7 @@ console.log(data);
                            console.log('hmm')
                         }
                     });
-} 
+//} 
                         }
                 },
                 {
