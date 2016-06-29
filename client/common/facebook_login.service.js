@@ -21,7 +21,7 @@ function facebookLogin($http, $q, $state, friendService, toastNotification) {
                         def.reject(profileInfo);
                     });
             };
-
+            
             var fbLoginError = (error) => {
                 console.log('fbLoginError', error);
             };

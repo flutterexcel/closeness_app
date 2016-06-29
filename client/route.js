@@ -13,6 +13,12 @@ angular.module('closeness').config(function($urlRouterProvider, $stateProvider, 
             templateUrl: 'client/friends/friends.html',
             controller: 'friendCtrl',
             controllerAs: 'friends'
+        })
+        .state('map',{
+            url: 'mapList',
+            templateUrl: 'client/friends/maplist.html',
+            controller:'friendCtrl',
+            controllerAs: 'friends'
         });
 
     $urlRouterProvider.otherwise("/login");
